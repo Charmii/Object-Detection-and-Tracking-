@@ -33,6 +33,9 @@ def draw_circle(event,x,y,flags,param):
             cv2.circle(img,(x,y),5,(0,0,255),-1)
             
 cv2.namedWindow('image')
+cv2.createTrackbar('R','image',0,255,draw_circle_rectangle)
+cv2.createTrackbar('G','image',0,255,draw_circle_rectangle)
+cv2.createTrackbar('B','image',0,255,draw_circle_rectangle)
 cv2.setMouseCallback('image',draw_circle_rectangle)
 while(1):
     cv2.imshow('image',img)
@@ -42,4 +45,8 @@ while(1):
         mode = not mode
     elif k == 27:
         break
+        
+    r = cv2.getTrackbarPos('R','image')
+    g = cv2.getTrackbarPos('G','image')
+    b = cv2.getTrackbarPos('B','image')
 cv2.destroyAllWindows()
